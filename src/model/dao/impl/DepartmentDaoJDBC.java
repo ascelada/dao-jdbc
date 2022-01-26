@@ -25,9 +25,9 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
             st.setString(1, department.getName());
             st.setInt(2,department.getId());
-            int rowsAffectec = st.executeUpdate();
+            int rowsAffected = st.executeUpdate();
 
-            if (rowsAffectec > 0) {
+            if (rowsAffected > 0) {
                 ResultSet rs = st.getGeneratedKeys();
                 if (rs.next()) {
                     int id = rs.getInt(1);
