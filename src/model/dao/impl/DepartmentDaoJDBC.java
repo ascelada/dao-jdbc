@@ -21,10 +21,10 @@ public class DepartmentDaoJDBC implements DepartmentDao {
     public void insert(Department department) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement("INSERT INTO department (Name, Id) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
+            st = conn.prepareStatement("INSERT INTO department (Name) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, department.getName());
-            st.setInt(2,department.getId());
+
             int rowsAffected = st.executeUpdate();
 
             if (rowsAffected > 0) {
@@ -50,7 +50,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
     public void update(Department department) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement("UPDATE department SET Name = ? WHERE Id, = ?");
+            st = conn.prepareStatement("UPDATE department SET Name = ? WHERE Id = ?");
             st.setString(1, department.getName());
             st.setInt(2, department.getId());
 
